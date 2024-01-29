@@ -1,4 +1,4 @@
-package dev.cristiano.rest;
+package dev.cristiano.rest.dto;
 
 import java.util.Map;
 

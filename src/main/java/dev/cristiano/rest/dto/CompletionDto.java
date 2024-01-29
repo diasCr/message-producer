@@ -1,4 +1,4 @@
-package dev.cristiano.rest;
+package dev.cristiano.rest.dto;
 
 public class CompletionDto {
 

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.cristiano.message.producer.MessageProducerService;
+import dev.cristiano.rest.dto.CompletionDto;
+import dev.cristiano.rest.dto.UsertaskDto;
 
 @RestController
 public class ProducerController {

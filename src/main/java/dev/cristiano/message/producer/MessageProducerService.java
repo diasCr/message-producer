@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 import dev.cristiano.api.v1.CorrelationData;
 import dev.cristiano.api.v1.UsertaskCompletionV1;
-import dev.cristiano.rest.CompletionDto;
-import dev.cristiano.rest.UsertaskDto;
+import dev.cristiano.rest.dto.CompletionDto;
+import dev.cristiano.rest.dto.UsertaskDto;
 
 @Component
 public class MessageProducerService {
