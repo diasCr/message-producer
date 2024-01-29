@@ -98,6 +98,58 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-schema</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>ch.demo.message</groupId>
+									<artifactId>message-api</artifactId>
+									<version>1.0.0-SNAPSHOT</version>
+									<classifier>all-apis-v1</classifier>
+									<type>zip</type>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/generated-resources/schemas</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Create Java POJO from json schema -->
+			<plugin>
+				<groupId>org.jsonschema2pojo</groupId>
+				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<id>schema-v1</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>${project.build.directory}/generated-resources/schemas</sourceDirectory>
+							<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+							<targetPackage>dev.cristiano.api.v1</targetPackage>
+							<includeConstructors>true</includeConstructors>
+							<includeRequiredPropertiesConstructor>true</includeRequiredPropertiesConstructor>
+							<includeAllPropertiesConstructor>false</includeAllPropertiesConstructor>
+							<serializable>true</serializable>
+							<includeJsr303Annotations>true</includeJsr303Annotations>
+							<useLongIntegers>true</useLongIntegers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

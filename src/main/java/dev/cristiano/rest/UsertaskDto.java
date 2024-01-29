@@ -6,16 +6,18 @@ public class UsertaskDto {
     String usertaskType;
     String inputData;
     Long customerId;
+    String createdBy;
     CompletionMetadataDto completionMetadata;
 
     public UsertaskDto() {
     }
 
-    public UsertaskDto(String usertaskType, String inputData, Long customerId,
+    public UsertaskDto(String usertaskType, String inputData, Long customerId, String createdBy,
             CompletionMetadataDto completionMetadata) {
         this.usertaskType = usertaskType;
         this.inputData = inputData;
         this.customerId = customerId;
+        this.createdBy = createdBy;
         this.completionMetadata = completionMetadata;
     }
 
@@ -43,4 +45,7 @@ public class UsertaskDto {
         return customerId;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
 }
