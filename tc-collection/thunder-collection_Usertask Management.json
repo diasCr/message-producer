@@ -1,0 +1,53 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Usertask Management",
+    "dateExported": "2024-01-30T09:56:30.159Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "84955eba-e1c0-4450-a85d-01aeefa71954",
+            "colId": "dc461961-c04d-43fa-8ad5-8c06985da600",
+            "containerId": "",
+            "name": "create usertask",
+            "url": "http://localhost:8081/usertasks",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-01-30T09:56:10.828Z",
+            "modified": "2024-01-30T09:56:10.828Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"usertaskType\": \"ANY_USERTASK\",\n    \"inputData\": \"{\\\"test\\\": \\\"dummy\\\"}\",\n    \"customerId\": 34343253,\n    \"createdBy\": \"Cristiano Dias\",\n    \"completionMetadata\": {\n        \"completionMessageRequired\": true,\n        \"subscriptionName\": \"customer-management-camunda-v1\",\n        \"correlationData\": {\n            \"myKey\": \"dummy\",\n            \"anotherKey\": \"dummy\"\n        }\n    }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "57ad3353-5685-43c4-8abf-9ad37129aabf",
+            "colId": "dc461961-c04d-43fa-8ad5-8c06985da600",
+            "containerId": "",
+            "name": "complete usertask",
+            "url": "http://localhost:8081/usertasks/{id}/completions",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-01-30T09:56:22.531Z",
+            "modified": "2024-01-30T09:56:22.531Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "e265c1bf-39bb-404b-bd75-15dcac5eeece",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"outputData\": \"{\\\"something\\\": \\\"dummy\\\", \\\"accepted\\\": \\\"true\\\"}\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

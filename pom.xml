@@ -119,7 +119,7 @@
 									<type>zip</type>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>${project.build.directory}/generated-resources/schemas</outputDirectory>
+							<outputDirectory>${project.build.directory}/generated-resources/schema/v1</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -137,7 +137,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>${project.build.directory}/generated-resources/schemas</sourceDirectory>
+							<sourceDirectory>${project.build.directory}/generated-resources/schema/v1</sourceDirectory>
 							<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
 							<targetPackage>dev.cristiano.api.v1</targetPackage>
 							<includeConstructors>true</includeConstructors>

@@ -32,6 +32,7 @@ public class MessageProducerService {
 
     private UsertaskCompletionV1 createMessageBody(UsertaskDto usertaskDto, CompletionDto completionDto) {
         UsertaskCompletionV1 completionMessageV1 = new UsertaskCompletionV1();
+        completionMessageV1.setUsertaskId(usertaskDto.getUuid());
         completionMessageV1.setCustomerId(usertaskDto.getCustomerId());
         completionMessageV1.setCreatedBy(usertaskDto.getCreatedBy());
         CorrelationData correlationData = new CorrelationData();
