@@ -1,10 +1,13 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI definition
-  version: v0
-servers:
-  - url: http://localhost:8081
-    description: Generated server url
+  title: Usertask Management API
+  version: 1.0.0
+  description: Usertask Management Service APIs for managing usertasks.
+  contact:
+    name: Cristiano Dias
+  license:
+    name: Apache 2.0
+    url: "https://www.apache.org/licenses/LICENSE-2.0.html"
 paths:
   /usertasks:
     post:
