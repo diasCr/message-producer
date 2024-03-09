@@ -24,7 +24,7 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            application/json:
               schema:
                 $ref: "#/components/schemas/UsertaskDto"
   /usertasks/{id}/completions:
@@ -48,7 +48,7 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            application/json:
               schema:
                 $ref: "#/components/schemas/CompletionDto"
 components:
