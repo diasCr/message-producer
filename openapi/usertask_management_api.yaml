@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8081
+  description: Generated server url
+paths:
+  /usertasks:
+    post:
+      tags:
+      - producer-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsertaskDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UsertaskDto'
+  /usertasks/{id}/completions:
+    post:
+      tags:
+      - producer-controller
+      operationId: complete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CompletionDto'
+components:
+  schemas:
+    CompletionMetadataDto:
+      type: object
+      properties:
+        subscriptionName:
+          type: string
+        completionMessageRequired:
+          type: boolean
+        correlationData:
+          type: object
+          additionalProperties:
+            type: string
+    UsertaskDto:
+      type: object
+      properties:
+        uuid:
+          type: string
+        usertaskType:
+          type: string
+        inputData:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        completionMetadata:
+          $ref: '#/components/schemas/CompletionMetadataDto'
+    CompletionDto:
+      type: object
+      properties:
+        outputData:
+          type: string

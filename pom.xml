@@ -85,6 +85,13 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Swagger UI -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -119,7 +126,8 @@
 									<type>zip</type>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>${project.build.directory}/generated-resources/schema/v1</outputDirectory>
+							<outputDirectory>
+								${project.build.directory}/generated-resources/schema/v1</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -137,7 +145,8 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>${project.build.directory}/generated-resources/schema/v1</sourceDirectory>
+							<sourceDirectory>
+								${project.build.directory}/generated-resources/schema/v1</sourceDirectory>
 							<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
 							<targetPackage>dev.cristiano.api.v1</targetPackage>
 							<includeConstructors>true</includeConstructors>
