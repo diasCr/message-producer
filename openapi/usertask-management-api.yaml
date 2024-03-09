@@ -8,6 +8,10 @@ info:
   license:
     name: Apache 2.0
     url: "https://www.apache.org/licenses/LICENSE-2.0.html"
+servers:
+  - url: http://localhost:8081
+  
+    description: Generated server url
 tags:
   - name: producer-controller
     description: Producer Controller
@@ -25,17 +29,7 @@ paths:
               $ref: "#/components/schemas/UsertaskDto"
             examples:
               id_1:
-                value:
-                  - usertaskType: ANY_USERTASK
-                    inputData: '{"test": "dummy"}'
-                    customerId: 34343253
-                    createdBy: Cristiano Dias
-                    completionMetadata:
-                      completionMessageRequired: true
-                      subscriptionName: customer-management-camunda-v1
-                      correlationData:
-                        myKey: dummy
-                        anotherKey: dummy
+                $ref: "#/components/examples/UsertaskDtoRequest"
       responses:
         "200":
           description: OK
@@ -45,18 +39,7 @@ paths:
                 $ref: "#/components/schemas/UsertaskDto"
               examples:
                 id_1:
-                  value:
-                    - uuid: 8d953bcb-9594-46bc-b35f-ac8c8c5dbf94
-                      usertaskType: ANY_USERTASK
-                      inputData: '{"test": "dummy"}'
-                      customerId: 34343253
-                      createdBy: Cristiano Dias
-                      completionMetadata:
-                        completionMessageRequired: true
-                        subscriptionName: customer-management-camunda-v1
-                        correlationData:
-                          myKey: dummy
-                          anotherKey: dummy
+                  $ref: "#/components/examples/UsertaskDtoResponse_200"
   /usertasks/{id}/completions:
     post:
       tags:
@@ -70,7 +53,7 @@ paths:
             type: string
           examples:
             id_1:
-              value: 8d953bcb-9594-46bc-b35f-ac8c8c5dbf94
+              $ref: "#/components/examples/Id_1"
       requestBody:
         content:
           application/json:
@@ -78,8 +61,7 @@ paths:
               $ref: "#/components/schemas/CompletionDto"
             examples:
               id_1:
-                value:
-                  outputData: '{"something": "dummy", "accepted": "true"}'
+                $ref: "#/components/examples/CompletionDtoRequest"
         required: true
       responses:
         "200":
@@ -90,8 +72,7 @@ paths:
                 $ref: "#/components/schemas/CompletionDto"
               examples:
                 id_1:
-                  value:
-                    outputData: '{"something": "dummy", "accepted": "true"}'
+                  $ref: "#/components/examples/CompletionDtoResponse_200"
 components:
   schemas:
     CompletionMetadataDto:
@@ -110,6 +91,7 @@ components:
       properties:
         uuid:
           type: string
+          readOnly: true
         usertaskType:
           type: string
         inputData:
@@ -126,3 +108,37 @@ components:
       properties:
         outputData:
           type: string
+  examples:
+    UsertaskDtoRequest:
+      value:
+        usertaskType: ANY_USERTASK
+        inputData: '{"test": "dummy"}'
+        customerId: 34343253
+        createdBy: Cristiano Dias
+        completionMetadata:
+          completionMessageRequired: true
+          subscriptionName: customer-management-camunda-v1
+          correlationData:
+            myKey: dummy
+            anotherKey: dummy
+    UsertaskDtoResponse_200:
+      value:
+        uuid: 8d953bcb-9594-46bc-b35f-ac8c8c5dbf94
+        usertaskType: ANY_USERTASK
+        inputData: '{"test": "dummy"}'
+        customerId: 34343253
+        createdBy: Cristiano Dias
+        completionMetadata:
+          completionMessageRequired: true
+          subscriptionName: customer-management-camunda-v1
+          correlationData:
+            myKey: dummy
+            anotherKey: dummy
+    Id_1:
+      value: 8d953bcb-9594-46bc-b35f-ac8c8c5dbf94
+    CompletionDtoRequest:
+      value:
+        outputData: '{"something": "dummy", "accepted": "true"}'
+    CompletionDtoResponse_200:
+      value:
+        outputData: '{"something": "dummy", "accepted": "true"}'
