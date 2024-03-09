@@ -19,11 +19,22 @@ paths:
         - producer-controller
       operationId: create
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/UsertaskDto"
-        required: true
+            example:
+              usertaskType: ANY_USERTASK
+              inputData: '{"test": "dummy"}'
+              customerId: 34343253
+              createdBy: Cristiano Dias
+              completionMetadata:
+                completionMessageRequired: true
+                subscriptionName: customer-management-camunda-v1
+                correlationData:
+                  myKey: dummy
+                  anotherKey: dummy
       responses:
         "200":
           description: OK
@@ -31,6 +42,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UsertaskDto"
+              example:
+                uuid: 8d953bcb-9594-46bc-b35f-ac8c8c5dbf94
+                usertaskType: ANY_USERTASK
+                inputData: '{"test": "dummy"}'
+                customerId: 34343253
+                createdBy: Cristiano Dias
+                completionMetadata:
+                  completionMessageRequired: true
+                  subscriptionName: customer-management-camunda-v1
+                  correlationData:
+                    myKey: dummy
+                    anotherKey: dummy
   /usertasks/{id}/completions:
     post:
       tags:
@@ -47,6 +70,8 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/CompletionDto"
+            example:
+              outputData: '{"something": "dummy", "accepted": "true"}'
         required: true
       responses:
         "200":
@@ -55,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CompletionDto"
+              example:
+                outputData: '{"something": "dummy", "accepted": "true"}'
 components:
   schemas:
     CompletionMetadataDto:
