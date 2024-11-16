@@ -12,7 +12,6 @@ import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.util.HadoopOutputFile;
 import org.apache.parquet.io.OutputFile;
 
-import ch.example.SampleDataFactory;
 import ch.example.SampleDataFactory.Org;
 import ch.example.generated.model.Attribute;
 import ch.example.generated.model.Organization;
